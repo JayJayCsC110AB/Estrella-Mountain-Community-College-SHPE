@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SHPE — STEM Hub</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="logo" href="index.html">SHPE</a>
+        <nav id="top-nav" class="main-nav" aria-label="Main navigation">
+          <a class="nav-btn" href="index.html">Home</a>
+          <a class="nav-btn" href="about.html">About</a>
+          <a class="nav-btn" href="join.html">Join</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero container">
+        <h1 class="hero-title">SHPE</h1>
+        <p class="hero-sub">Helping students navigate engineering pathways — majors, transfer, and career roadmaps</p>
+      </section>
+
+      <section class="search-bar container">
+        <input id="search" type="search" placeholder="Search majors, keywords (e.g. transfer, certifications)" aria-label="Search majors">
+      </section>
+
+      <section id="majors-container" class="cards-grid container" aria-hidden="false">
+        <!-- Major cards will be injected here -->
+      </section>
+    </main>
+
+    <footer class="site-footer container">
+      <small>© EMCC SHPE — Build, Learn, Connect</small>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
