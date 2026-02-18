@@ -32,3 +32,30 @@ document.addEventListener('DOMContentLoaded', ()=>{
     search.addEventListener('input', (e)=> renderMajors(e.target.value))
   }
 })
+
+// Biomedical circle menu interactions
+document.addEventListener('DOMContentLoaded', ()=>{
+  const main = document.getElementById('bio-circle-main')
+  const buttons = document.getElementById('bio-circle-buttons')
+  if(!main || !buttons) return
+
+  main.addEventListener('click', ()=>{
+    const open = buttons.classList.toggle('open')
+    buttons.setAttribute('aria-hidden', (!open).toString())
+  })
+
+  buttons.addEventListener('click', (e)=>{
+    const btn = e.target.closest('.circle-btn')
+    if(!btn) return
+    const targetId = btn.dataset.target
+    if(!targetId) return
+
+    // hide other panels
+    document.querySelectorAll('.bio-panel').forEach(p=> p.classList.remove('active'))
+    const panel = document.getElementById(targetId)
+    if(panel){
+      panel.classList.add('active')
+      panel.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  })
+})
