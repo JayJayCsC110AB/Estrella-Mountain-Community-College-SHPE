@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   })
 
   document.querySelectorAll('.ai-form').forEach(form => {
-    form.addEventListener('submit', (e)=>{
+    form.addEventListener('submit', async (e)=>{
       e.preventDefault()
       const id = form.dataset.target
       const panel = document.getElementById(id)
@@ -92,14 +92,40 @@ document.addEventListener('DOMContentLoaded', ()=>{
       userMsg.textContent = text
       chat.appendChild(userMsg)
 
-      // simple bot echo reply
-      const botMsg = document.createElement('div')
-      botMsg.className = 'ai-msg bot'
-      botMsg.textContent = 'AI Mentor: ' + text
-      setTimeout(()=>{
-        chat.appendChild(botMsg)
-        chat.scrollTop = chat.scrollHeight
-      }, 400)
+      // show loading
+      const loading = document.createElement('div')
+      loading.className = 'ai-msg bot'
+      loading.textContent = 'AI Mentor: searching source...'
+      chat.appendChild(loading)
+      chat.scrollTop = chat.scrollHeight
+
+      // determine major from panel id (ai-<major>)
+      const major = id.replace(/^ai-/, '')
+      try{
+        const resp = await fetch(`/api/ai?q=${encodeURIComponent(text)}&major=${encodeURIComponent(major)}`)
+        const json = await resp.json()
+        // remove loading
+        loading.remove()
+        if(json.results && json.results.length){
+          json.results.forEach(r=>{
+            const m = document.createElement('div')
+            m.className = 'ai-msg bot'
+            m.textContent = r.text
+            chat.appendChild(m)
+          })
+        } else {
+          const m = document.createElement('div')
+          m.className = 'ai-msg bot'
+          m.textContent = 'No relevant information found on the source page.'
+          chat.appendChild(m)
+        }
+      } catch(err){
+        loading.remove()
+        const m = document.createElement('div')
+        m.className = 'ai-msg bot'
+        m.textContent = 'Error: could not reach AI source.'
+        chat.appendChild(m)
+      }
 
       input.value = ''
       chat.scrollTop = chat.scrollHeight
