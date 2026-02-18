@@ -1,11 +1,11 @@
-// Majors data with descriptions and slugs
+// Majors data with descriptions, slugs, abbreviation and key for styling
 const majors = [
-  { name: "Biomedical Engineering", slug: "biomedical.html", short: "Medical devices, bio-systems and healthcare tech." },
-  { name: "Chemical Engineering", slug: "chemical.html", short: "Process design, materials, and energy." },
-  { name: "Civil Engineering", slug: "civil.html", short: "Infrastructure, structures, and environmental design." },
-  { name: "Electrical Engineering", slug: "electrical.html", short: "Circuits, power systems, and electronics." },
-  { name: "Materials Engineering", slug: "materials.html", short: "Materials science, testing and development." },
-  { name: "Mechanical Engineering", slug: "mechanical.html", short: "Mechanics, design, and thermal systems." }
+  { key: 'biomedical', abbr: 'BIOe', name: "Biomedical Engineering", slug: "biomedical.html", short: "Medical devices, bio-systems and healthcare tech." },
+  { key: 'chemical',  abbr: 'CE',   name: "Chemical Engineering", slug: "chemical.html", short: "Process design, materials, and energy." },
+  { key: 'civil',      abbr: 'CivE', name: "Civil Engineering", slug: "civil.html", short: "Infrastructure, structures, and environmental design." },
+  { key: 'electrical', abbr: 'EE',   name: "Electrical Engineering", slug: "electrical.html", short: "Circuits, power systems, and electronics." },
+  { key: 'materials',  abbr: 'MatE', name: "Materials Engineering", slug: "materials.html", short: "Materials science, testing and development." },
+  { key: 'mechanical', abbr: 'Me',   name: "Mechanical Engineering", slug: "mechanical.html", short: "Mechanics, design, and thermal systems." }
 ]
 
 function renderMajors(filter = ''){
@@ -15,11 +15,12 @@ function renderMajors(filter = ''){
   majors.filter(m => !q || (m.name+ ' ' + (m.short||'')).toLowerCase().includes(q))
     .forEach(m => {
       const a = document.createElement('a')
-      a.className = 'card'
+      a.className = `card card-${m.key}`
       a.href = m.slug
+      a.setAttribute('aria-label', m.name)
       a.innerHTML = `
-        <strong>${m.name}</strong>
-        <div class="muted">${m.short}</div>
+        <div class="abbr">${m.abbr}</div>
+        <div class="muted">${m.name}</div>
       `
       container.appendChild(a)
     })

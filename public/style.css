@@ -35,10 +35,35 @@ main#home { padding-top: 32px; }
 
 /* Cards */
 .cards-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:18px; width:100%; max-width:1000px; margin:18px auto 48px; }
-.card { display:block; background: #ffffff; border-radius: 12px; padding: 18px; text-align:center; text-decoration:none; color:var(--text); border:1px solid rgba(2,6,23,0.04); box-shadow: 0 6px 18px rgba(2,6,23,0.04); transition: transform .16s ease, box-shadow .16s ease; }
-.card:hover { transform: translateY(-6px); box-shadow: 0 10px 30px rgba(2,6,23,0.06); }
+.card { display:flex; align-items:center; justify-content:center; flex-direction:column; background: #ffffff; border-radius: 12px; padding: 18px; text-align:center; text-decoration:none; color:var(--text); border:1px solid rgba(2,6,23,0.04); box-shadow: 0 6px 18px rgba(2,6,23,0.04); transition: transform .16s ease, box-shadow .16s ease; }
+.card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 10px 30px rgba(2,6,23,0.06); }
 .card strong { display:block; font-size:1rem; }
 .card .muted{ margin-top:8px; color:var(--muted); font-size:0.95rem }
+
+/* Circular card layout */
+.cards-grid { display:flex; flex-wrap:wrap; gap:18px; justify-content:center; align-items:center; width:100%; max-width:1000px; margin:18px auto 48px; }
+.card { width:140px; height:140px; border-radius:50%; padding:0; }
+.card .abbr { font-weight:900; color:#fff; font-size:1.2rem; }
+.card .muted { color: rgba(255,255,255,0.95); font-size:0.85rem; margin-top:6px; }
+.card .muted { display:block; padding:8px; text-align:center; }
+
+/* Color mappings per major */
+.card-bioomedical, .card-bio { background:#16a34a; }
+.card-biomedical, .card-bio { background:#16a34a; }
+.card-biomedical .muted { color: rgba(255,255,255,0.9) }
+.card-chemical { background:#fb923c; }
+.card-civil { background:#f472b6; }
+.card-electrical { background:#ef4444; }
+.card-mechanical { background:#7c3f00; }
+.card-materials { background:#7c3aed; }
+
+/* Support both with/without 'card-' prefixes in case keys vary */
+.card-biomedical, .card-bio, .card-chemical, .card-civil, .card-electrical, .card-mechanical, .card-materials { color:#fff; border: none }
+
+@media (max-width:600px){
+  .card { width:120px; height:120px }
+  .card .abbr { font-size:1rem }
+}
 
 /* Search */
 .search-bar { display:flex; justify-content:center; padding:12px 0 6px; }
