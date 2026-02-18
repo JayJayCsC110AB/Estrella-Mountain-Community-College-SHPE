@@ -59,3 +59,50 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }
   })
 })
+
+// AI Mentor basic behavior (local echo)
+document.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('.ai-toggle').forEach(btn => {
+    btn.addEventListener('click', ()=>{
+      const id = btn.dataset.target
+      const panel = document.getElementById(id)
+      if(!panel) return
+      const open = panel.classList.toggle('open')
+      panel.setAttribute('aria-hidden', (!open).toString())
+      if(open){
+        const chat = panel.querySelector('.ai-chat')
+        if(chat) chat.scrollTop = chat.scrollHeight
+      }
+    })
+  })
+
+  document.querySelectorAll('.ai-form').forEach(form => {
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault()
+      const id = form.dataset.target
+      const panel = document.getElementById(id)
+      if(!panel) return
+      const input = form.querySelector('input[name="q"]')
+      const text = input.value.trim()
+      if(!text) return
+
+      const chat = panel.querySelector('.ai-chat')
+      const userMsg = document.createElement('div')
+      userMsg.className = 'ai-msg user'
+      userMsg.textContent = text
+      chat.appendChild(userMsg)
+
+      // simple bot echo reply
+      const botMsg = document.createElement('div')
+      botMsg.className = 'ai-msg bot'
+      botMsg.textContent = 'AI Mentor: ' + text
+      setTimeout(()=>{
+        chat.appendChild(botMsg)
+        chat.scrollTop = chat.scrollHeight
+      }, 400)
+
+      input.value = ''
+      chat.scrollTop = chat.scrollHeight
+    })
+  })
+})

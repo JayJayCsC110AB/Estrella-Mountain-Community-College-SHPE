@@ -56,9 +56,18 @@
         </ul>
       </section>
 
-      <section>
-        <h2>AI Mentor (coming)</h2>
-        <div class="card">AI mentor placeholder — plan to integrate per-major guidance here.</div>
+      <section class="ai-mentor-section">
+        <h2>AI Mentor</h2>
+        <div class="ai-mentor">
+          <button class="ai-toggle" data-target="ai-electrical">Open AI Mentor</button>
+          <div id="ai-electrical" class="ai-panel" aria-hidden="true">
+            <div class="ai-chat" id="ai-electrical-chat"></div>
+            <form class="ai-form" data-target="ai-electrical">
+              <input name="q" type="text" placeholder="Ask the AI mentor about Electrical Engineering..." required>
+              <button type="submit">Send</button>
+            </form>
+          </div>
+        </div>
       </section>
     </main>
   </body>

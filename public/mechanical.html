@@ -47,9 +47,18 @@
         <p>Tools and certifications relevant to mechanical engineering.</p>
       </section>
 
-      <section>
-        <h2>AI Mentor (coming)</h2>
-        <div class="card">AI mentor placeholder for Mechanical Engineering.</div>
+      <section class="ai-mentor-section">
+        <h2>AI Mentor</h2>
+        <div class="ai-mentor">
+          <button class="ai-toggle" data-target="ai-mechanical">Open AI Mentor</button>
+          <div id="ai-mechanical" class="ai-panel" aria-hidden="true">
+            <div class="ai-chat" id="ai-mechanical-chat"></div>
+            <form class="ai-form" data-target="ai-mechanical">
+              <input name="q" type="text" placeholder="Ask the AI mentor about Mechanical Engineering..." required>
+              <button type="submit">Send</button>
+            </form>
+          </div>
+        </div>
       </section>
     </main>
   </body>

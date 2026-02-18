@@ -56,9 +56,18 @@
         </ul>
       </section>
 
-      <section>
-        <h2>AI Mentor (coming)</h2>
-        <div class="card">AI mentor placeholder — will provide tailored advice per major.</div>
+      <section class="ai-mentor-section">
+        <h2>AI Mentor</h2>
+        <div class="ai-mentor">
+          <button class="ai-toggle" data-target="ai-materials">Open AI Mentor</button>
+          <div id="ai-materials" class="ai-panel" aria-hidden="true">
+            <div class="ai-chat" id="ai-materials-chat"></div>
+            <form class="ai-form" data-target="ai-materials">
+              <input name="q" type="text" placeholder="Ask the AI mentor about Materials Engineering..." required>
+              <button type="submit">Send</button>
+            </form>
+          </div>
+        </div>
       </section>
     </main>
   </body>
