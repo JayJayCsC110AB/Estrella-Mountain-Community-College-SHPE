@@ -102,7 +102,8 @@ Edit `public/style.css` to customize colors and layout. CSS variables are define
 - [ ] Add blog/news section
 - [ ] Database integration for events and advisors
 - [ ] Email notifications for members
+- [ ] Add Subfields
 
 ---
 
-Built with ❤️ for EMCC SHPE
+Built with ❤️ for SHPE
