@@ -56,17 +56,236 @@
         </ul>
       </section>
 
+      <!-- Interactive circle menu -->
+      <section id="electrical-interactive" style="margin-bottom:36px; text-align:center">
+        <div class="circle-wrapper">
+          <button class="circle" id="electrical-circle-main">Learn More</button>
+          <div class="circle-buttons" id="electrical-circle-buttons" aria-hidden="true">
+            <button class="circle-btn" data-target="electrical-overview">Overview</button>
+            <button class="circle-btn" data-target="electrical-roadmap">Roadmap</button>
+            <button class="circle-btn" data-target="electrical-transfer">Transfer</button>
+            <button class="circle-btn" data-target="electrical-certs">Certs & Tools</button>
+            <button class="circle-btn" data-target="electrical-resources">Resources</button>
+          </div>
+        </div>
+
+        <div class="bio-panels">
+          <div id="electrical-overview" class="bio-panel">
+            <h3>Overview</h3>
+            <p>Electrical engineering involves designing and developing electrical equipment and systems. Engineers work on everything from power generation and distribution to electronics, telecommunications, and renewable energy.</p>
+          </div>
+
+          <div id="electrical-roadmap" class="bio-panel">
+            <h3>Roadmap</h3>
+            <ul>
+              <li><strong>Foundations:</strong> Calculus, physics, programming, circuit theory</li>
+              <li><strong>Core:</strong> Circuits, signals, electronics, electromagnetics</li>
+              <li><strong>Advanced:</strong> Power systems, controls, capstone projects</li>
+            </ul>
+          </div>
+
+          <div id="electrical-transfer" class="bio-panel">
+            <h3>Transfer & Partners</h3>
+            <p>Estrella Mountain Community College partners with universities to provide seamless transfer pathways for electrical engineering students.</p>
+            <a href="https://www.estrellamountain.edu/university-transfer" target="_blank">View Transfer Pathways</a>
+          </div>
+
+          <div id="electrical-certs" class="bio-panel">
+            <h3>Certifications & Tools</h3>
+            <p><strong>Key tools:</strong> MATLAB, SPICE, CAD software, multimeters, oscilloscopes.</p>
+            <p><strong>Certifications:</strong> Professional Engineering (PE), Fundamentals of Engineering (FE).</p>
+          </div>
+
+          <div id="electrical-resources" class="bio-panel">
+            <h3>Resources</h3>
+            <ul>
+              <li>Electronics labs</li>
+              <li>Industry partnerships</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <section style="margin-top: 48px; text-align: center;">
         <h2>Subfields</h2>
         <div class="subfields-grid">
-          <div class="subfield-bubble">Subfield 1</div>
-          <div class="subfield-bubble">Subfield 2</div>
-          <div class="subfield-bubble">Subfield 3</div>
-          <div class="subfield-bubble">Subfield 4</div>
-          <div class="subfield-bubble">Subfield 5</div>
-          <div class="subfield-bubble">Subfield 6</div>
+          <button class="subfield-bubble" data-field="power">Power<br>Systems</button>
+          <button class="subfield-bubble" data-field="electronics">Electronics &<br>Microelectronics</button>
+          <button class="subfield-bubble" data-field="telecom">Telecommunications</button>
+          <button class="subfield-bubble" data-field="control">Control<br>Systems</button>
+          <button class="subfield-bubble" data-field="renewable">Renewable<br>Energy</button>
+          <button class="subfield-bubble" data-field="embedded">Embedded<br>Systems</button>
+        </div>
+
+        <div class="subfield-panels">
+          <div id="power" class="subfield-panel">
+            <h3>Power Systems</h3>
+            <p>Design and operation of electrical grids, power generation, transmission, and distribution systems. Power engineers ensure reliable electricity delivery while optimizing efficiency and integrating renewable energy sources.</p>
+            <strong>Top Companies:</strong>
+            <p>Duke Energy, NextEra Energy, Southern Company, American Electric Power</p>
+          </div>
+
+          <div id="electronics" class="subfield-panel">
+            <h3>Electronics & Microelectronics</h3>
+            <p>Development of semiconductors, microprocessors, and electronic devices for computing and communication. Electronics engineers design circuits and chip architectures that power modern technology.</p>
+            <strong>Top Companies:</strong>
+            <p>Intel, NVIDIA, AMD, Qualcomm, Texas Instruments</p>
+          </div>
+
+          <div id="telecom" class="subfield-panel">
+            <h3>Telecommunications</h3>
+            <p>Design and maintenance of communication networks including wireless, fiber optic, and satellite systems. Telecom engineers develop technologies for fast, reliable data transmission globally.</p>
+            <strong>Top Companies:</strong>
+            <p>AT&T, Verizon, Cisco Systems, Nokia, Ericsson</p>
+          </div>
+
+          <div id="control" class="subfield-panel">
+            <h3>Control Systems</h3>
+            <p>Development of automation and feedback control systems for industrial processes and applications. Control engineers design systems that monitor and adjust operations for optimal performance and safety.</p>
+            <strong>Top Companies:</strong>
+            <p>Siemens, ABB, Emerson Electric, Rockwell Automation, Honeywell</p>
+          </div>
+
+          <div id="renewable" class="subfield-panel">
+            <h3>Renewable Energy</h3>
+            <p>Design of solar panels, wind turbines, battery systems, and other clean energy technologies. Renewable energy engineers work on sustainable power solutions to meet global energy demands.</p>
+            <strong>Top Companies:</strong>
+            <p>NextEra Energy, First Solar, Vestas, Siemens Gamesa, Tesla Energy</p>
+          </div>
+
+          <div id="embedded" class="subfield-panel">
+            <h3>Embedded Systems</h3>
+            <p>Development of dedicated computer systems embedded in devices from IoT sensors to automotive controls. Embedded engineers create efficient, reliable systems with limited computing resources.</p>
+            <strong>Top Companies:</strong>
+            <p>Texas Instruments, STMicroelectronics, NXP Semiconductors, Arduino, Raspberry Pi</p>
+          </div>
         </div>
       </section>
-    </main>
+
+      <script>
+        // Circle menu toggle
+        const electricalCircleMain = document.getElementById('electrical-circle-main');
+        const electricalCircleButtons = document.getElementById('electrical-circle-buttons');
+        
+        if (electricalCircleMain && electricalCircleButtons) {
+          electricalCircleMain.addEventListener('click', () => {
+            const isOpen = electricalCircleButtons.classList.toggle('open');
+            electricalCircleButtons.setAttribute('aria-hidden', (!isOpen).toString());
+          });
+
+          // Circle button click handlers
+          document.querySelectorAll('#electrical-interactive .circle-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+              const targetId = this.getAttribute('data-target');
+              if (targetId) {
+                document.querySelectorAll('.bio-panel').forEach(p => p.classList.remove('active'));
+                const targetPanel = document.getElementById(targetId);
+                if (targetPanel) targetPanel.classList.add('active');
+              }
+            });
+          });
+        }
+
+        // Subfield panel toggle
+        document.querySelectorAll('.subfield-bubble').forEach(bubble => {
+          bubble.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-field');
+            const targetPanel = document.getElementById(targetId);
+            
+            // Close all other panels
+            document.querySelectorAll('.subfield-panel').forEach(panel => {
+              panel.classList.remove('active');
+            });
+            document.querySelectorAll('.subfield-bubble').forEach(btn => {
+              btn.classList.remove('active');
+            });
+            
+            // Open target panel
+            if (targetPanel) {
+              targetPanel.classList.add('active');
+              this.classList.add('active');
+            }
+          });
+        });
+      </script>
+
+      <!-- SHPE Chat Area -->
+      <section style="margin-top: 64px; text-align: center;">
+        <h2>SHPE AI Chat</h2>
+        <p style="color: var(--text-muted); margin-bottom: 24px;">Ask questions about Electrical Engineering and get AI-powered insights.</p>
+        <div style="max-width: 850px; margin: 0 auto;">
+          <button class="button" style="margin-bottom: 16px;" onclick="toggleChat()">💬 Open Chat</button>
+          <div id="chat-panel" class="ai-panel">
+            <div class="ai-chat" id="chat-messages">
+              <div class="ai-msg-container">
+                <div class="ai-msg bot">Welcome to SHPE AI Chat! 🤖 Ask me about electrical engineering careers, skills, innovations, and opportunities.</div>
+              </div>
+            </div>
+            <div class="ai-form">
+              <input type="text" placeholder="Ask about electrical engineering..." id="chat-input" onkeypress="handleChatInput(event)">
+              <button onclick="sendChatMessage()">Send</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <script>
+        function toggleChat() {
+          const panel = document.getElementById('chat-panel');
+          panel.classList.toggle('open');
+        }
+
+        function deleteMessage(element) {
+          element.closest('.ai-msg-container').remove();
+        }
+
+        async function sendChatMessage() {
+          const input = document.getElementById('chat-input');
+          const message = input.value.trim();
+          if (message) {
+            const messagesDiv = document.getElementById('chat-messages');
+            
+            const userContainer = document.createElement('div');
+            userContainer.className = 'ai-msg-container';
+            const userMsg = document.createElement('div');
+            userMsg.className = 'ai-msg user';
+            userMsg.textContent = message;
+            const userDeleteBtn = document.createElement('button');
+            userDeleteBtn.className = 'msg-delete-btn';
+            userDeleteBtn.innerHTML = '&times;';
+            userDeleteBtn.onclick = function() { deleteMessage(this); };
+            userContainer.appendChild(userMsg);
+            userContainer.appendChild(userDeleteBtn);
+            messagesDiv.appendChild(userContainer);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            input.value = '';
+
+            try {
+              const response = await fetch(`/api/chat?q=${encodeURIComponent(message)}&major=electrical`);
+              const data = await response.json();
+              
+              const botContainer = document.createElement('div');
+              botContainer.className = 'ai-msg-container';
+              const botMsg = document.createElement('div');
+              botMsg.className = 'ai-msg bot';
+              botMsg.textContent = data.answer || 'I can help you learn about Electrical Engineering!';
+              const botDeleteBtn = document.createElement('button');
+              botDeleteBtn.className = 'msg-delete-btn';
+              botDeleteBtn.innerHTML = '&times;';
+              botDeleteBtn.onclick = function() { deleteMessage(this); };
+              botContainer.appendChild(botMsg);
+              botContainer.appendChild(botDeleteBtn);
+              messagesDiv.appendChild(botContainer);
+              messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            } catch (err) {
+              console.error('Chat error:', err);
+            }
+          }
+        }
+
+        function handleChatInput(event) {
+          if (event.key === 'Enter') sendChatMessage();
+        }
+      </script>
   </body>
 </html>

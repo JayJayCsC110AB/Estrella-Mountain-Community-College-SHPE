@@ -5,7 +5,9 @@ const majors = [
   { key: 'civil',      abbr: 'CivE', name: "Civil Engineering", slug: "civil.html", short: "Infrastructure, structures, and environmental design." },
   { key: 'electrical', abbr: 'EE',   name: "Electrical Engineering", slug: "electrical.html", short: "Circuits, power systems, and electronics." },
   { key: 'materials',  abbr: 'MatE', name: "Materials Engineering", slug: "materials.html", short: "Materials science, testing and development." },
-  { key: 'mechanical', abbr: 'Me',   name: "Mechanical Engineering", slug: "mechanical.html", short: "Mechanics, design, and thermal systems." }
+  { key: 'mechanical', abbr: 'Me',   name: "Mechanical Engineering", slug: "mechanical.html", short: "Mechanics, design, and thermal systems." },
+  { key: 'software',   abbr: 'SE',   name: "Software Engineering", slug: "software.html", short: "Design, development, and deployment of software systems." },
+  { key: 'machine-learning', abbr: 'ML', name: "Machine Learning & AI", slug: "machine-learning.html", short: "Intelligent systems, data science, and neural networks." }
 ]
 
 function renderMajors(filter = ''){

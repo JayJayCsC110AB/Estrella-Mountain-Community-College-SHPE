@@ -47,17 +47,236 @@
         <p>Tools and certifications relevant to mechanical engineering.</p>
       </section>
 
+      <!-- Interactive circle menu -->
+      <section id="mechanical-interactive" style="margin-bottom:36px; text-align:center">
+        <div class="circle-wrapper">
+          <button class="circle" id="mechanical-circle-main">Learn More</button>
+          <div class="circle-buttons" id="mechanical-circle-buttons" aria-hidden="true">
+            <button class="circle-btn" data-target="mechanical-overview">Overview</button>
+            <button class="circle-btn" data-target="mechanical-roadmap">Roadmap</button>
+            <button class="circle-btn" data-target="mechanical-transfer">Transfer</button>
+            <button class="circle-btn" data-target="mechanical-certs">Certs & Tools</button>
+            <button class="circle-btn" data-target="mechanical-resources">Resources</button>
+          </div>
+        </div>
+
+        <div class="bio-panels">
+          <div id="mechanical-overview" class="bio-panel">
+            <h3>Overview</h3>
+            <p>Mechanical engineering involves designing and developing mechanical systems and machines. Engineers work on everything from consumer products and vehicles to industrial machinery and power generation systems.</p>
+          </div>
+
+          <div id="mechanical-roadmap" class="bio-panel">
+            <h3>Roadmap</h3>
+            <ul>
+              <li><strong>Foundations:</strong> Calculus, physics, materials science, programming</li>
+              <li><strong>Core:</strong> Statics, dynamics, thermodynamics, materials engineering</li>
+              <li><strong>Advanced:</strong> Design, manufacturing, capstone projects</li>
+            </ul>
+          </div>
+
+          <div id="mechanical-transfer" class="bio-panel">
+            <h3>Transfer & Partners</h3>
+            <p>Estrella Mountain Community College partners with universities to provide seamless transfer pathways for mechanical engineering students.</p>
+            <a href="https://www.estrellamountain.edu/university-transfer" target="_blank">View Transfer Pathways</a>
+          </div>
+
+          <div id="mechanical-certs" class="bio-panel">
+            <h3>Certifications & Tools</h3>
+            <p><strong>Key tools:</strong> SOLIDWORKS, CAD software, MATLAB, FEA analysis, manufacturing software.</p>
+            <p><strong>Certifications:</strong> Professional Engineering (PE), Fundamentals of Engineering (FE).</p>
+          </div>
+
+          <div id="mechanical-resources" class="bio-panel">
+            <h3>Resources</h3>
+            <ul>
+              <li>Design labs</li>
+              <li>Machine shop access</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <section style="margin-top: 48px; text-align: center;">
         <h2>Subfields</h2>
         <div class="subfields-grid">
-          <div class="subfield-bubble">Subfield 1</div>
-          <div class="subfield-bubble">Subfield 2</div>
-          <div class="subfield-bubble">Subfield 3</div>
-          <div class="subfield-bubble">Subfield 4</div>
-          <div class="subfield-bubble">Subfield 5</div>
-          <div class="subfield-bubble">Subfield 6</div>
+          <button class="subfield-bubble" data-field="thermal">Thermal &<br>Fluids</button>
+          <button class="subfield-bubble" data-field="design">Mechanical<br>Design</button>
+          <button class="subfield-bubble" data-field="manufacturing">Manufacturing</button>
+          <button class="subfield-bubble" data-field="robotics">Robotics &<br>Automation</button>
+          <button class="subfield-bubble" data-field="hvac">HVAC<br>Systems</button>
+          <button class="subfield-bubble" data-field="automotive">Automotive<br>Engineering</button>
+        </div>
+
+        <div class="subfield-panels">
+          <div id="thermal" class="subfield-panel">
+            <h3>Thermal & Fluids Engineering</h3>
+            <p>Study of heat transfer, thermodynamics, and fluid flow in mechanical systems. Engineers design efficient cooling systems, engines, and HVAC equipment for buildings and vehicles.</p>
+            <strong>Top Companies:</strong>
+            <p>Carrier Global, Danfoss, Parker Hannifin, GE Power</p>
+          </div>
+
+          <div id="design" class="subfield-panel">
+            <h3>Mechanical Design</h3>
+            <p>Development and optimization of mechanical components and systems using CAD software and simulation tools. Mechanical designers create products from consumer goods to industrial machinery.</p>
+            <strong>Top Companies:</strong>
+            <p>Boston Engineering, PTC, Autodesk, Siemens PLM</p>
+          </div>
+
+          <div id="manufacturing" class="subfield-panel">
+            <h3>Manufacturing Engineering</h3>
+            <p>Design and optimization of production processes including machining, assembly, and quality control. Manufacturing engineers improve efficiency, reduce waste, and ensure product quality.</p>
+            <strong>Top Companies:</strong>
+            <p>Emerson Electric, Rockwell Automation, Dassault Systèmes, FANUC</p>
+          </div>
+
+          <div id="robotics" class="subfield-panel">
+            <h3>Robotics & Automation</h3>
+            <p>Development of robotic systems and automated machinery for industrial and consumer applications. Robotics engineers design systems for manufacturing, healthcare, and exploration.</p>
+            <strong>Top Companies:</strong>
+            <p>KUKA, ABB Robotics, Boston Dynamics, Universal Robots</p>
+          </div>
+
+          <div id="hvac" class="subfield-panel">
+            <h3>HVAC Systems</h3>
+            <p>Design and control of heating, ventilation, and air conditioning systems for buildings and vehicles. HVAC engineers ensure comfort while optimizing energy efficiency and indoor air quality.</p>
+            <strong>Top Companies:</strong>
+            <p>Carrier, Trane Technologies, Lennox International, Daikin Industries</p>
+          </div>
+
+          <div id="automotive" class="subfield-panel">
+            <h3>Automotive Engineering</h3>
+            <p>Design and development of vehicles including powertrains, chassis, and safety systems. Automotive engineers work on improving fuel efficiency, performance, and developing electric and autonomous vehicles.</p>
+            <strong>Top Companies:</strong>
+            <p>Tesla, General Motors, Ford, BMW, Toyota, Volkswagen</p>
+          </div>
         </div>
       </section>
-    </main>
+
+      <script>
+        // Circle menu toggle
+        const mechanicalCircleMain = document.getElementById('mechanical-circle-main');
+        const mechanicalCircleButtons = document.getElementById('mechanical-circle-buttons');
+        
+        if (mechanicalCircleMain && mechanicalCircleButtons) {
+          mechanicalCircleMain.addEventListener('click', () => {
+            const isOpen = mechanicalCircleButtons.classList.toggle('open');
+            mechanicalCircleButtons.setAttribute('aria-hidden', (!isOpen).toString());
+          });
+
+          // Circle button click handlers
+          document.querySelectorAll('#mechanical-interactive .circle-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+              const targetId = this.getAttribute('data-target');
+              if (targetId) {
+                document.querySelectorAll('.bio-panel').forEach(p => p.classList.remove('active'));
+                const targetPanel = document.getElementById(targetId);
+                if (targetPanel) targetPanel.classList.add('active');
+              }
+            });
+          });
+        }
+
+        // Subfield panel toggle
+        document.querySelectorAll('.subfield-bubble').forEach(bubble => {
+          bubble.addEventListener('click', function() {
+            const targetId = this.getAttribute('data-field');
+            const targetPanel = document.getElementById(targetId);
+            
+            // Close all other panels
+            document.querySelectorAll('.subfield-panel').forEach(panel => {
+              panel.classList.remove('active');
+            });
+            document.querySelectorAll('.subfield-bubble').forEach(btn => {
+              btn.classList.remove('active');
+            });
+            
+            // Open target panel
+            if (targetPanel) {
+              targetPanel.classList.add('active');
+              this.classList.add('active');
+            }
+          });
+        });
+      </script>
+
+      <!-- SHPE Chat Area -->
+      <section style="margin-top: 64px; text-align: center;">
+        <h2>SHPE AI Chat</h2>
+        <p style="color: var(--text-muted); margin-bottom: 24px;">Ask questions about Mechanical Engineering and get AI-powered insights.</p>
+        <div style="max-width: 850px; margin: 0 auto;">
+          <button class="button" style="margin-bottom: 16px;" onclick="toggleChat()">💬 Open Chat</button>
+          <div id="chat-panel" class="ai-panel">
+            <div class="ai-chat" id="chat-messages">
+              <div class="ai-msg-container">
+                <div class="ai-msg bot">Welcome to SHPE AI Chat! 🤖 Ask me about mechanical engineering careers, skills, innovations, and opportunities.</div>
+              </div>
+            </div>
+            <div class="ai-form">
+              <input type="text" placeholder="Ask about mechanical engineering..." id="chat-input" onkeypress="handleChatInput(event)">
+              <button onclick="sendChatMessage()">Send</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <script>
+        function toggleChat() {
+          const panel = document.getElementById('chat-panel');
+          panel.classList.toggle('open');
+        }
+
+        function deleteMessage(element) {
+          element.closest('.ai-msg-container').remove();
+        }
+
+        async function sendChatMessage() {
+          const input = document.getElementById('chat-input');
+          const message = input.value.trim();
+          if (message) {
+            const messagesDiv = document.getElementById('chat-messages');
+            
+            const userContainer = document.createElement('div');
+            userContainer.className = 'ai-msg-container';
+            const userMsg = document.createElement('div');
+            userMsg.className = 'ai-msg user';
+            userMsg.textContent = message;
+            const userDeleteBtn = document.createElement('button');
+            userDeleteBtn.className = 'msg-delete-btn';
+            userDeleteBtn.innerHTML = '&times;';
+            userDeleteBtn.onclick = function() { deleteMessage(this); };
+            userContainer.appendChild(userMsg);
+            userContainer.appendChild(userDeleteBtn);
+            messagesDiv.appendChild(userContainer);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            input.value = '';
+
+            try {
+              const response = await fetch(`/api/chat?q=${encodeURIComponent(message)}&major=mechanical`);
+              const data = await response.json();
+              
+              const botContainer = document.createElement('div');
+              botContainer.className = 'ai-msg-container';
+              const botMsg = document.createElement('div');
+              botMsg.className = 'ai-msg bot';
+              botMsg.textContent = data.answer || 'I can help you learn about Mechanical Engineering!';
+              const botDeleteBtn = document.createElement('button');
+              botDeleteBtn.className = 'msg-delete-btn';
+              botDeleteBtn.innerHTML = '&times;';
+              botDeleteBtn.onclick = function() { deleteMessage(this); };
+              botContainer.appendChild(botMsg);
+              botContainer.appendChild(botDeleteBtn);
+              messagesDiv.appendChild(botContainer);
+              messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            } catch (err) {
+              console.error('Chat error:', err);
+            }
+          }
+        }
+
+        function handleChatInput(event) {
+          if (event.key === 'Enter') sendChatMessage();
+        }
+      </script>
   </body>
 </html>
